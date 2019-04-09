@@ -13,8 +13,10 @@ class ArticlesController < ApplicationController
     
     def create
         @article = Article.new(article_params)
+        byebug
         
         if @article.save
+            byebug
             redirect_to @article
         else 
             render 'new'
@@ -32,8 +34,13 @@ def update
         render 'edit'
     end
 end
+    def destroy
+        @article = Article.find(params[:id])
+        @article.destroy
 
-private
+        redirect_to articles_path
+    end
+ private
   def article_params
     params.require(:article).permit(:title, :text)
   end
