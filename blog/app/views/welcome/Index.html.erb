@@ -1,3 +1,16 @@
-<h1>Welcome#Index</h1>
-<p>Find me in app/views/welcome/Index.html.erb</p>
-<h1>Hello, Blog App User!</h1>
+<h1>Listing articles</h1>
+ 
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Text</th>
+  </tr>
+ 
+  <% @articles.each do |article| %>
+    <tr>
+      <td><%= article.title %></td>
+      <td><%= article.text %></td>
+      <td><%= link_to 'Show', article_path(article) %></td>
+    </tr>
+  <% end %>
+</table>
